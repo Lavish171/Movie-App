@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.example.movieapp.domain.model.MovieDetails" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.movie_description.MovieDescriptionFragment">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/movie_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintTop_toTopOf="@id/movie_title" />
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:maxLines="2"
+            android:text="@{movie.originalTitle}"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tv_movierating"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            android:drawableTint="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="My name is khan" />
+
+        <TextView
+            android:id="@+id/tv_movierating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#F30E0E"
+            app:my_name="@{Double.toString(movie.voteAverage)}"
+            app:layout_constraintBottom_toBottomOf="@id/movie_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/movie_title"
+            tools:text="Rating 8.8" />
+
+        <ImageView
+            android:id="@+id/iv_poster"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:urlToImage="@{movie.posterPath}"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toBottomOf="@id/movie_title"
+            app:layout_constraintStart_toStartOf="@id/movie_title"
+            app:layout_constraintEnd_toEndOf="@id/tv_movierating"/>
+
+        <TextView
+            android:id="@+id/tv_releasedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#06EF0F"
+            app:releaseDate="@{movie.releaseDate}"
+            app:layout_constraintStart_toStartOf="@id/iv_poster"
+            app:layout_constraintTop_toBottomOf="@id/iv_poster"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:language="@{movie.originalLanguage}"
+            android:textColor="#0387EF"
+            app:layout_constraintTop_toTopOf="@id/tv_releasedate"
+            app:layout_constraintBottom_toBottomOf="@id/tv_releasedate"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_movie_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_releasedate"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:text="Movie Overview"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="italic"
+            android:text="@{movie.overview}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_movie_overview"
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_overview" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
